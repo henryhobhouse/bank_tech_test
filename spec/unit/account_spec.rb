@@ -28,6 +28,12 @@ describe Account do
     expect(@test_account.history[1][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
   end
 
+  it 'account can process withdrawal' do
+    @test_account.deposit(100)
+    @test_account.withdrawal(50)
+    expect(@test_account.balance).to eq 50
+  end
+
   after(:each) do
     Timecop.return
   end

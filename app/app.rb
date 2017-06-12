@@ -1,4 +1,5 @@
 require './app/lib/account.rb'
+
 # App controller for Bank
 class Bank
   attr_reader :accounts

@@ -1,5 +1,6 @@
 require 'date'
 
+# Object class for each account belonging to the bank.
 class Account
   attr_reader :account_number, :balance, :history
 
@@ -20,5 +21,9 @@ class Account
                   type: type,
                   amount: value,
                   balance: @balance)
+  end
+
+  def withdrawal(value)
+    @balance -= value
   end
 end
