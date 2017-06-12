@@ -5,5 +5,4 @@ describe Bank do
   it 'bank has no accounts on initialize' do
     expect(subject.accounts).to be_empty
   end
-
 end

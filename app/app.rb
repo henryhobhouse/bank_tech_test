@@ -1,9 +1,8 @@
-#App controller for Bank
+# App controller for Bank
 class Bank
   attr_reader :accounts
 
-  def initialize()
+  def initialize
     @accounts = []
   end
-
 end
