@@ -18,4 +18,9 @@ class Bank
     account = accounts.find { |acc| acc.account_number == account_number }
     account.deposit(value)
   end
+
+  def withdrawal(account_number, value)
+    account = accounts.find { |acc| acc.account_number == account_number }
+    account.withdrawal(value)
+  end
 end

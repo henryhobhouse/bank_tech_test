@@ -1,23 +1,37 @@
 describe Bank do
-  it 'bank has no accounts on initialize' do
+  before(:all) do
+    @bank = Bank.new
+    @bank.new_account
+  end
+
+  it 'bank has no accounts on initialization' do
     expect(subject.accounts).to be_empty
   end
 
-  it 'accounts can have a new account' do
-    subject.new_account
-    expect(subject.accounts.count).to eq 1
+  context 'creating accounts' do
+    it 'bank can create a new account' do
+      expect(@bank.accounts.count).to eq 1
+    end
+
+    it 'new accounts will be assigned a unique ID' do
+      @bank.new_account
+      expect(@bank.accounts[0].account_number).to eq 11_111_111
+      expect(@bank.accounts[1].account_number).to eq 11_111_112
+    end
   end
 
-  it 'new accounts will be assigned unique ID' do
-    subject.new_account
-    subject.new_account
-    expect(subject.accounts[0].account_number).to eq 11_111_111
-    expect(subject.accounts[1].account_number).to eq 11_111_112
-  end
+  context 'updating specific accounts' do
+    before(:all) do
+      @bank.deposit(11_111_111, 100)
+    end
 
-  it 'Bank can deposit into an specific account' do
-    subject.new_account
-    subject.deposit(11_111_111, 100)
-    expect(subject.accounts[0].balance).to eq 100
+    it 'Bank can deposit into an specific account' do
+      expect(@bank.accounts[0].balance).to eq 100
+    end
+
+    it 'Bank can withdrawal into an specific account' do
+      @bank.withdrawal(11_111_111, 70)
+      expect(@bank.accounts[0].balance).to eq 30
+    end
   end
 end

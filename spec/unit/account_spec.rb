@@ -28,7 +28,7 @@ describe Account do
     end
 
     it 'account balance cannot go below overdraft allowance' do
-      expect { @test_account.withdrawal(50) }.to raise_error(RuntimeError, "Insufficent Funds")
+      expect { @test_account.withdrawal(50) }.to raise_error('Insufficent Funds')
     end
   end
 
@@ -39,14 +39,14 @@ describe Account do
 
     it 'account records deposit date and time' do
       @test_account.deposit(100)
-      expect(@test_account.history[1][:type]).to eq :deposit
+      expect(@test_account.history[1][:credit]).to eq 100
       expect(@test_account.history[1][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
     end
 
     it 'account records withdrawal date and time' do
       @test_account.deposit(100)
       @test_account.withdrawal(50)
-      expect(@test_account.history[2][:type]).to eq :withdrawal
+      expect(@test_account.history[2][:debit]).to eq 50
       expect(@test_account.history[2][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
     end
 
