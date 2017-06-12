@@ -38,6 +38,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
     slop (3.6.0)
+    timecop (0.8.1)
     unicode-display_width (1.2.1)
 
 PLATFORMS
@@ -47,6 +48,7 @@ DEPENDENCIES
   pry
   rspec
   rubocop
+  timecop
 
 RUBY VERSION
    ruby 2.4.1p111
