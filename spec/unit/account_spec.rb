@@ -34,6 +34,13 @@ describe Account do
     expect(@test_account.balance).to eq 50
   end
 
+  it 'account records withdrawal date and time' do
+    @test_account.deposit(100)
+    @test_account.withdrawal(50)
+    expect(@test_account.history[2][:type]).to eq :withdrawal
+    expect(@test_account.history[2][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
+  end
+
   after(:each) do
     Timecop.return
   end

@@ -25,5 +25,6 @@ class Account
 
   def withdrawal(value)
     @balance -= value
+    record(:withdrawal, value)
   end
 end
