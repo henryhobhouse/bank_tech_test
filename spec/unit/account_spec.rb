@@ -26,6 +26,10 @@ describe Account do
       @test_account.withdrawal(50)
       expect(@test_account.balance).to eq 50
     end
+
+    it 'account balance cannot go below overdraft allowance' do
+      expect { @test_account.withdrawal(50) }.to raise_error(RuntimeError, "Insufficent Funds")
+    end
   end
 
   context 'recording history' do
