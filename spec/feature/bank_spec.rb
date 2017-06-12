@@ -35,7 +35,7 @@ describe Bank do
     end
 
     it 'Bank can create statement for specific account' do
-      expect{ @bank.statement(11_111_111) }.to output("date || credit || debit || balance\n12/06/2017 || 100.00 ||  || 100.00\n12/06/2017 ||  || 70.00 || 30.00\n").to_stdout
+      expect { @bank.statement(11_111_111) }.to output("date || credit || debit || balance\n12/06/2017 || 100.00 ||  || 100.00\n12/06/2017 ||  || 70.00 || 30.00\n").to_stdout
     end
   end
 end

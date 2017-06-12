@@ -16,21 +16,21 @@ class Bank
   end
 
   def deposit(account_number, value)
-    account = getAccount(account_number)
+    account = get_account(account_number)
     account.deposit(value)
   end
 
   def withdrawal(account_number, value)
-    account = getAccount(account_number)
+    account = get_account(account_number)
     account.withdrawal(value)
   end
 
   def statement(account_number)
-    account = getAccount(account_number)
+    account = get_account(account_number)
     PrintStatement.new(account.history)
   end
 
-  def getAccount(account_number)
+  def get_account(account_number)
     @accounts.find { |acc| acc.account_number == account_number }
   end
 end
