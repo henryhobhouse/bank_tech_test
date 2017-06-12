@@ -2,6 +2,7 @@ require 'date'
 
 # Object class for each account belonging to the bank.
 class Account
+  OVERDRAFT = 0
   attr_reader :account_number, :balance, :history
 
   def initialize(account_number)
@@ -24,6 +25,7 @@ class Account
   end
 
   def withdrawal(value)
+    raise 'Insufficent Funds' if @balance - value < OVERDRAFT
     @balance -= value
     record(:withdrawal, value)
   end
