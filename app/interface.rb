@@ -3,6 +3,7 @@ require './app/lib/statement_printer.rb'
 
 # Responsible for interfacing between the user and the app
 class Interface
+  include StatementPrinter
   attr_reader :bank
 
   def initialize
@@ -25,6 +26,6 @@ class Interface
 
   def statement(account_number)
     account = @bank.get_account(account_number)
-    StatementPrinter.new(account.transactions.history)
+    StatementPrinter.print(account.transactions.history)
   end
 end

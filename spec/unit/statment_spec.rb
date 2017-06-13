@@ -13,8 +13,8 @@ describe StatementPrinter do
        balance: 23 }]
   end
 
-  let(:creditStatement) { described_class.new(credithistory) }
-  let(:debitStatement) { described_class.new(debithistory) }
+  let(:creditStatement) { described_class.print(credithistory) { include StatementPrinter } }
+  let(:debitStatement) { described_class.print(debithistory) { include StatementPrinter } }
 
   it 'outputs credit but leaves debit field blank. Two decimals on values' do
     expect { creditStatement }.to output(+
