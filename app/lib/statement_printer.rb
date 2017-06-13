@@ -1,6 +1,6 @@
 # Allows bank to output account history
 module StatementPrinter
-  def self.print(transactions)
+  def self.print_statement(transactions)
     print_header
     transactions.each do |transaction|
       print_body(transaction)
