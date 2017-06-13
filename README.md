@@ -43,3 +43,12 @@ date || credit || debit || balance
 ```
 
 The basic output made it difficult to output the results with two decimals without occurring an error due to implicit conversion when a variable was null credit on debit or vice versa. I therefore used an if statement logic. The alternative was to change the variables format in the Account object but I felt that this was not its responsibility. Ultimately if the specification wasn't demanding output in that format, or through the REPL, I would of refactored to record type of transaction and move the responsibility of display to the CSS rather than using logic statements.
+
+## Update
+
+Further refactored for the following:
+
+* Bank class has been split into Interface and Bank to better apply solid principles.
+* PrinterStatement has been converted into a module as did not need an instance.
+* Account has been split into Account and Transaction to better apply solid principles
+* Tests updated to reflect refactor
