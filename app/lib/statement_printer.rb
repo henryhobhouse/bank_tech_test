@@ -1,8 +1,8 @@
 # Allows bank to output account history
-class PrintStatement
-  def initialize(history)
+class StatementPrinter
+  def initialize(transactions)
     print_header
-    history.each do |transaction|
+    transactions.each do |transaction|
       print_body(transaction)
       puts ''
     end
@@ -23,7 +23,7 @@ class PrintStatement
   end
 
   def transaction_type(transaction)
-    if transaction[:credit].nil?
+    if transaction[:type] == 'debit'
       print_debit(transaction)
     else
       print_credit(transaction)
@@ -32,11 +32,11 @@ class PrintStatement
 
   def print_debit(transaction)
     print ' || '
-    printf('%.2f', transaction[:debit])
+    printf('%.2f', transaction[:value])
   end
 
   def print_credit(transaction)
-    printf('%.2f', transaction[:credit])
+    printf('%.2f', transaction[:value])
     print ' || '
   end
 end

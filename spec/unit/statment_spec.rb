@@ -1,15 +1,15 @@
-describe PrintStatement do
+describe StatementPrinter do
   let(:test_time) { Time.local(2008, 9, 1, 12, 0, 0) }
   let(:credithistory) do
     [{ datetime: test_time,
-       credit: 12,
-       debit: nil,
+       type: 'credit',
+       value: 12,
        balance: 100 }]
   end
   let(:debithistory) do
     [{ datetime: test_time,
-       credit: nil,
-       debit: 24,
+       type: 'debit',
+       value: 24,
        balance: 23 }]
   end
 

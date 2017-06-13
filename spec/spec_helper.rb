@@ -1,5 +1,5 @@
 require 'pry'
-require './app/app.rb'
+require './app/interface.rb'
 require 'simplecov'
 require 'simplecov-console'
 require 'timecop'

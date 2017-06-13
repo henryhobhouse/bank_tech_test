@@ -27,24 +27,22 @@ describe Account do
       account.withdrawal(50)
       expect(account.balance).to eq 50
     end
-
-    it 'account balance cannot go below overdraft allowance' do
-      expect { account.withdrawal(50) }.to raise_error('Insufficent Funds')
-    end
   end
 
   context 'recording history' do
     it 'account records deposit date and time' do
       account.deposit(100)
-      expect(account.history[0][:credit]).to eq 100
-      expect(account.history[0][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
+      expect(account.transactions[0][:value]).to eq 100
+      expect(account.transactions[0][:type]).to eq 'credit'
+      expect(account.transactions[0][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
     end
 
     it 'account records withdrawal date and time' do
       account.deposit(100)
       account.withdrawal(50)
-      expect(account.history[1][:debit]).to eq 50
-      expect(account.history[1][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
+      expect(account.transactions[1][:value]).to eq 50
+      expect(account.transactions[1][:type]).to eq 'debit'
+      expect(account.transactions[1][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
     end
 
     after(:all) do

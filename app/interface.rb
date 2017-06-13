@@ -1,8 +1,8 @@
 require './app/lib/account.rb'
-require './app/lib/statement.rb'
+require './app/lib/statement_printer.rb'
 
 # App controller for Bank
-class Bank
+class Interface
   attr_reader :accounts
 
   def initialize
@@ -27,7 +27,7 @@ class Bank
 
   def statement(account_number)
     account = get_account(account_number)
-    PrintStatement.new(account.history)
+    StatementPrinter.new(account.transactions)
   end
 
   def get_account(account_number)

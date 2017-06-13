@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/henryhobhouse/projects/bank_tech_test/spec/feature/bank_spec.rb": [
+      "/Users/henryhobhouse/projects/bank_tech_test/spec/feature/interface_spec.rb": [
         1,
         1,
         1,
@@ -42,6 +42,9 @@
         null,
         1,
         2,
+        null,
+        null,
+        null,
         null,
         null,
         1,
@@ -52,7 +55,7 @@
       ],
       "/Users/henryhobhouse/projects/bank_tech_test/spec/unit/account_spec.rb": [
         1,
-        8,
+        7,
         null,
         1,
         1,
@@ -81,11 +84,8 @@
         1,
         null,
         null,
+        null,
         1,
-        2,
-        null,
-        null,
-        null,
         1,
         1,
         1,
@@ -93,6 +93,7 @@
         1,
         null,
         null,
+        1,
         1,
         1,
         1,
@@ -135,6 +136,6 @@
         null
       ]
     },
-    "timestamp": 1497356698
+    "timestamp": 1497362545
   }
 }
