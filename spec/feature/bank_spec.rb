@@ -23,6 +23,8 @@ describe Bank do
   context 'updating specific accounts' do
     before(:all) do
       @bank.deposit(11_111_111, 100)
+      test_time = Time.local(2008, 9, 1, 12, 0, 0)
+      Timecop.freeze(test_time)
     end
 
     it 'Bank can deposit into an specific account' do
@@ -35,7 +37,11 @@ describe Bank do
     end
 
     it 'Bank can create statement for specific account' do
-      expect { @bank.statement(11_111_111) }.to output("date || credit || debit || balance\n12/06/2017 || 100.00 ||  || 100.00\n12/06/2017 ||  || 70.00 || 30.00\n").to_stdout
+      expect { @bank.statement(11_111_111) }.to output("date || credit || debit || balance\n13/06/2017 || 100.00 ||  || 100.00\n01/09/2008 ||  || 70.00 || 30.00\n").to_stdout
+    end
+
+    after(:all) do
+      Timecop.return
     end
   end
 end

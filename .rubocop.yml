@@ -1,0 +1,10 @@
+Metrics/BlockLength:
+  Exclude:
+    - "./spec/feature/*_spec.rb"
+    - "./spec/unit/*_spec.rb"
+
+
+Metrics/LineLength:
+  Exclude:
+    - "./spec/feature/*_spec.rb"
+    - "./spec/unit/*_spec.rb"
