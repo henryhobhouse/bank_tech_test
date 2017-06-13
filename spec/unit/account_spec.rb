@@ -1,7 +1,7 @@
 describe Account do
   let(:account) { described_class.new(11_111_111) }
 
-  before(:each) do
+  before(:all) do
     test_time = Time.local(2008, 9, 1, 12, 0, 0)
     Timecop.freeze(test_time)
   end
@@ -47,7 +47,7 @@ describe Account do
       expect(account.history[1][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
     end
 
-    after(:each) do
+    after(:all) do
       Timecop.return
     end
   end
