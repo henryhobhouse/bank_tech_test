@@ -16,11 +16,15 @@ describe StatementPrinter do
   let(:creditStatement) { described_class.new(credithistory) }
   let(:debitStatement) { described_class.new(debithistory) }
 
-  it 'outputs a value of credit but leaves debit field blank. Two decimals on values' do
-    expect { creditStatement }.to output("date || credit || debit || balance\n01/09/2008 || 12.00 ||  || 100.00\n").to_stdout
+  it 'outputs credit but leaves debit field blank. Two decimals on values' do
+    expect { creditStatement }.to output(+
+            "date || credit || debit || balance\n" \
+            "01/09/2008 || 12.00 ||  || 100.00\n").to_stdout
   end
 
-  it 'outputs a value of debit but leaves credit blank. Two decimals on values' do
-    expect { debitStatement }.to output("date || credit || debit || balance\n01/09/2008 ||  || 24.00 || 23.00\n").to_stdout
+  it 'outputs debit but leaves credit blank. Two decimals on values' do
+    expect { debitStatement }.to output(+
+            "date || credit || debit || balance\n" \
+            "01/09/2008 ||  || 24.00 || 23.00\n").to_stdout
   end
 end

@@ -1,22 +1,12 @@
 describe Interface do
   before(:all) do
     @interface = Interface.new
-    @interface.new_account
-  end
-
-  it 'Interface has no accounts on initialization' do
-    expect(subject.accounts).to be_empty
+    @interface.bank.new_account
   end
 
   context 'creating accounts' do
     it 'Interface can create a new account' do
-      expect(@interface.accounts.count).to eq 1
-    end
-
-    it 'new accounts will be assigned a unique ID' do
-      @interface.new_account
-      expect(@interface.accounts[0].account_number).to eq 11_111_111
-      expect(@interface.accounts[1].account_number).to eq 11_111_112
+      expect(@interface.bank.accounts.count).to eq 1
     end
   end
 
@@ -28,12 +18,12 @@ describe Interface do
     end
 
     it 'Interface can deposit into an specific account' do
-      expect(@interface.accounts[0].balance).to eq 100
+      expect(@interface.bank.accounts[0].balance).to eq 100
     end
 
     it 'Interface can withdrawal into an specific account' do
       @interface.withdrawal(11_111_111, 70)
-      expect(@interface.accounts[0].balance).to eq 30
+      expect(@interface.bank.accounts[0].balance).to eq 30
     end
 
     it 'Interface can create statement for specific account' do

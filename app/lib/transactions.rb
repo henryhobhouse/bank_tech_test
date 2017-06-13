@@ -1,5 +1,6 @@
 require 'date'
 
+# responsible for recording all transactions for each account
 class Transactions
   attr_reader :history
 

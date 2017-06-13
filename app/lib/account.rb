@@ -1,7 +1,7 @@
 require 'date'
 require_relative 'transactions'
 
-# Object class for each account belonging to the bank.
+# Resonsible for balance and manipulating it from recieving deposits and credits
 class Account
   attr_reader :account_number, :balance, :transactions
 
