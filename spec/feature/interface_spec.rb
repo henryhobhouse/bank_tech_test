@@ -4,12 +4,12 @@ describe Interface do
     @interface.new_account
   end
 
-  it 'bank has no accounts on initialization' do
+  it 'Interface has no accounts on initialization' do
     expect(subject.accounts).to be_empty
   end
 
   context 'creating accounts' do
-    it 'bank can create a new account' do
+    it 'Interface can create a new account' do
       expect(@interface.accounts.count).to eq 1
     end
 
@@ -27,19 +27,19 @@ describe Interface do
       Timecop.freeze(test_time)
     end
 
-    it 'Bank can deposit into an specific account' do
+    it 'Interface can deposit into an specific account' do
       expect(@interface.accounts[0].balance).to eq 100
     end
 
-    it 'Bank can withdrawal into an specific account' do
+    it 'Interface can withdrawal into an specific account' do
       @interface.withdrawal(11_111_111, 70)
       expect(@interface.accounts[0].balance).to eq 30
     end
 
-    it 'Bank can create statement for specific account' do
-      expect { @interface.statement(11_111_111) }.to output( +
-      "date || credit || debit || balance\n" +
-      "13/06/2017 || 100.00 ||  || 100.00\n" +
+    it 'Interface can create statement for specific account' do
+      expect { @interface.statement(11_111_111) }.to output(+
+      "date || credit || debit || balance\n" \
+      "13/06/2017 || 100.00 ||  || 100.00\n" \
       "01/09/2008 ||  || 70.00 || 30.00\n").to_stdout
     end
 

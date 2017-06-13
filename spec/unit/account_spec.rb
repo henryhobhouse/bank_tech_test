@@ -1,11 +1,6 @@
 describe Account do
   let(:account) { described_class.new(11_111_111) }
 
-  before(:all) do
-    test_time = Time.local(2008, 9, 1, 12, 0, 0)
-    Timecop.freeze(test_time)
-  end
-
   context 'account initiliazation' do
     it 'new account can have account number assigned to it' do
       expect(account.account_number).to eq 11_111_111
@@ -26,27 +21,6 @@ describe Account do
       account.deposit(100)
       account.withdrawal(50)
       expect(account.balance).to eq 50
-    end
-  end
-
-  context 'recording history' do
-    it 'account records deposit date and time' do
-      account.deposit(100)
-      expect(account.transactions[0][:value]).to eq 100
-      expect(account.transactions[0][:type]).to eq 'credit'
-      expect(account.transactions[0][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
-    end
-
-    it 'account records withdrawal date and time' do
-      account.deposit(100)
-      account.withdrawal(50)
-      expect(account.transactions[1][:value]).to eq 50
-      expect(account.transactions[1][:type]).to eq 'debit'
-      expect(account.transactions[1][:datetime].strftime('%I:%M:%S')).to eq '12:00:00'
-    end
-
-    after(:all) do
-      Timecop.return
     end
   end
 end

@@ -1,5 +1,6 @@
 require './app/lib/account.rb'
 require './app/lib/statement_printer.rb'
+require './app/lib/transactions.rb'
 
 # App controller for Bank
 class Interface
@@ -27,7 +28,7 @@ class Interface
 
   def statement(account_number)
     account = get_account(account_number)
-    StatementPrinter.new(account.transactions)
+    StatementPrinter.new(account.transactions.history)
   end
 
   def get_account(account_number)

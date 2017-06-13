@@ -1,4 +1,5 @@
 require 'date'
+require_relative 'transactions'
 
 # Object class for each account belonging to the bank.
 class Account
@@ -7,26 +8,17 @@ class Account
   def initialize(account_number)
     @account_number = account_number
     @balance = 0
-    @transactions = []
+    @transactions = Transactions.new
     @overdraft_allowance = 0
   end
 
   def deposit(credit)
     @balance += credit
-    record('credit', credit)
+    @transactions.record('credit', credit, balance)
   end
 
   def withdrawal(debit)
     @balance -= debit
-    record('debit', debit)
-  end
-
-  private
-
-  def record(type, value)
-    @transactions.push( datetime: DateTime.now,
-                        type: type,
-                        value: value,
-                        balance: @balance)
+    @transactions.record('debit', debit, balance)
   end
 end
